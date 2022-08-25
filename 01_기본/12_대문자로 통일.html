@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>대문자로 통일</title>
+  </head>
+  <body>
+    <script>
+      const solution = function (s) {
+        let answer = '';
+        for (let x of s) {
+          let num = x.charCodeAt();
+          if (num >= 97 && num <= 122) answer += String.fromCharCode(num - 32);
+          else answer += x;
+          // if (x === x.isLowerCase()) answer += x.isUpperCase();
+          // else answer += x;
+        }
+
+        return answer;
+      };
+
+      let str = 'ItIsTimeToStudy';
+      console.log(solution(str));
+      console.log(solution2(str));
+    </script>
+  </body>
+</html>

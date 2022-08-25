@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>재귀함수를 이용한 이진수 출력</title>
+  </head>
+  <body>
+    <script>
+      // 재귀는 항상 종착점을 생각해야된다
+      // My Code 완전 잘못 짜 부러쓰~
+      let arr = new Array();
+      function solution(N) {
+        if (N < 2) {
+          if (N === 1) (arr = 1), console.log(1);
+          return;
+        } else {
+          N = parseInt(N / 2);
+          solution(N);
+          arr = N % 2;
+          console.log(arr);
+        }
+      }
+
+      function solution2(n) {
+        let answer = ''; // 문자열 자동추가
+        function DFS(n) {
+          if (n === 0) return;
+          else {
+            DFS(parseInt(n / 2));
+            answer += n % 2;
+          }
+        }
+        DFS(n);
+
+        return answer;
+      }
+
+      // console.log(solution(11));
+      console.log(solution2(11));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // MY Code
+      // 1차원 배열 2개
+      const winner = function (a, b) {
+        if (a === b) return 'D';
+        else if (a === 'R' && b === 'P') return 'B';
+        else if (a === 'R' && b === 'S') return 'A';
+        else if (a === 'S' && b === 'P') return 'A';
+        else if (a === 'S' && b === 'R') return 'B';
+        else if (a === 'P' && b === 'S') return 'B';
+        else if (a === 'P' && b === 'R') return 'A';
+      };
+      function sol(A, B) {
+        answer = [];
+        for (let i = 0; i < A.length; i++) {
+          answer[i] = winner(A[i], B[i]);
+        }
+
+        return answer;
+      }
+
+      function sol2(a, b) {
+        let answer = '';
+        for (let i = 0; i < a.length; i++) {
+          if (a[i] === b[i]) answer += 'D' + ' ';
+          else if (a[i] === 'R' && b[i] === 'S') answer += 'A' + ' ';
+          else if (a[i] === 'S' && b[i] === 'P') answer += 'A' + ' ';
+          else if (a[i] === 'P' && b[i] === 'R') answer += 'A' + ' ';
+          else answer += 'B' + ' '; // 이건 생각못했다
+        }
+        return answer;
+      }
+
+      // Rock, Scissors, Paper
+      let A = ['R', 'S', 'P', 'S', 'S'];
+      let B = ['S', 'S', 'R', 'R', 'P'];
+      console.log(sol(A, B));
+      console.log(sol2(A, B));
+    </script>
+  </body>
+</html>

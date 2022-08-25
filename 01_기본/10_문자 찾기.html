@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>문자 찾기</title>
+  </head>
+  <body>
+    <h2>
+      한 개의 문자열을 입력받고, 특정 문자를 입력받아 해당 특정문자가 입력받은
+      문자열에 몇 개 존재하는지 알아내는 프로그램
+    </h2>
+    <script>
+      // MY Code
+      const solution = function (String) {
+        let answer = 0;
+        let arr = String.split('');
+        console.log(arr);
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === 'R') answer += 1;
+        }
+
+        return answer;
+      };
+
+      // T Code
+      function solution2(s, T) {
+        let answer = 0;
+        for (let x of s) {
+          if (x === T) answer++;
+        }
+        return answer;
+      }
+
+      let String = 'COMPUTERPRROMGRAMMING';
+      console.log(solution(String));
+      console.log(solution2(String, 'T'));
+    </script>
+  </body>
+</html>

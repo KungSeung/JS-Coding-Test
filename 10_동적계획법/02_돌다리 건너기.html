@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>돌다리 건너기</title>
+  </head>
+  <body>
+    <script>
+      // 1개 11, 2 - 2
+      // 2개 111, 12, 21 - 3
+      // 3개 1111, 211, 121, 112, 22 - 5
+      const solution = function (N) {
+        let answer = 0;
+        let dy = Array.from({ length: N + 1 }, () => 0);
+        dy[1] = 2;
+        dy[2] = 3;
+        for (let i = 3; i <= N; i++) dy[i] = dy[i - 2] + dy[i - 1];
+        answer = dy[N];
+        return answer;
+      };
+
+      console.log(solution(6));
+    </script>
+  </body>
+</html>

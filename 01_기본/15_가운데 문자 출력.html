@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gg</title>
+  </head>
+  <body>
+    <script>
+      // MY Code
+      const solution = function (string) {
+        let answer = [];
+
+        let stringNum = Math.floor(string.length / 2);
+        if (string.length % 2 == 1) {
+          // 홀수
+          answer[0] = string[stringNum];
+        } else {
+          // 짝수
+          answer[0] = string[stringNum - 1];
+          answer[1] = string[stringNum];
+        }
+
+        return answer.toString();
+      };
+
+      // substring(i, j) : i에서 j전까지 뽑아라
+      // substr(i, j) : i에서 j개를 뽑아라
+      // T Code
+      const solution2 = function (string) {
+        let answer;
+        let mid = Math.floor(string.length / 2);
+        if (s.length % 2 === 1) answer = s.substring(mid, mid + 1);
+        else answer = s.substring(mid - 1, mid + 1);
+
+        return answer;
+      };
+
+      let string = 'study';
+      console.log(solution(string));
+      console.log(solution2(string));
+    </script>
+  </body>
+</html>

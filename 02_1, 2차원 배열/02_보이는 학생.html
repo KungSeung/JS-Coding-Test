@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // MY Code
+      const solution = function (student) {
+        let answer = 1; // 첫번째 사람은 무조건 보임
+        let max = 0;
+        for (let i = 0; i < student.length; i++) {
+          if (max < student[i]) {
+            max = student[i];
+            answer++;
+          }
+        }
+
+        return answer;
+      };
+
+      let student = [176, 150, 134, 180, 190, 175];
+      console.log(solution(student));
+    </script>
+  </body>
+</html>

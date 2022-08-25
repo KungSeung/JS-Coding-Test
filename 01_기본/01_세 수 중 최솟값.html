@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>세 수 중 최솟값</title>
+  </head>
+  <body>
+    <h2>
+      100이하의 자연수 A, B, C를 입력받아 가장 작은 값을 출력하는 프로그램을
+      작성하세요(정렬 사용x)
+    </h2>
+    <script>
+      // MY Code
+      const SmallestNum = (A, B, C) => {
+        let tmp;
+
+        if (A >= B) {
+          tmp = B;
+          B = A;
+          A = tmp;
+        }
+
+        if (A >= C) {
+          tmp = C;
+          C = A;
+          A = tmp;
+        }
+
+        console.log(`가장 작은 수는 ${A}`);
+      };
+
+      SmallestNum(6, 5, 11);
+      SmallestNum(200, 10, 1);
+
+      // T Code
+      function solution(a, b, c) {
+        let answer;
+        if (a < b) answer = a;
+        else answer = b;
+        if (answer > c) answer = c;
+
+        return answer;
+      }
+
+      console.log(solution(6, 5, 11));
+    </script>
+  </body>
+</html>

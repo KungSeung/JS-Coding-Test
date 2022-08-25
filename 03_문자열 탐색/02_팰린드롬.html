@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. 알파벳만 가지고 검사
+      // 2. 대소문자 구분x, 알파벳 이외의 문자들 무시
+      function sol(str) {
+        let answer = 'Yes';
+        let newStr = str.toLowerCase();
+        let n = str.length;
+        for (let i = 0; i < n; i++) {
+          if (97 <= newStr[i] && newStr[i] <= 122) {
+            if (str[i] !== newStr[n - i - 1]) answer = 'No';
+          }
+        }
+
+        return answer;
+      }
+
+      function sol2(str) {
+        let answer = 'Yes';
+        // replace 정규식
+        str = str.toLowerCase().replace(/[^a-z]/g, '');
+        if (str.split('').reverse().join('') !== str) return 'No';
+
+        return answer;
+      }
+
+      let str = 'found7, time: study; yduts emit ,7Dnuof';
+      console.log(sol(str));
+      console.log(sol2(str));
+    </script>
+  </body>
+</html>

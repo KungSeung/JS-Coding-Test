@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이진트리 순회</title>
+  </head>
+  <body>
+    <script>
+      // T Code
+      // 전위순회, 중위순회, 후위순회
+      // 스택 프레임 그려보기
+      function solution(n) {
+        let answer = '';
+        function DFS(v) {
+          if (v > 7) {
+            return;
+          } else {
+            answer += v; // 전위순회
+            DFS(v * 2);
+            // answer += v;  // 중위순회
+            DFS(v * 2 + 1);
+            // answer += v;  // 후위순회
+          }
+        }
+
+        DFS(v);
+        return answer;
+      }
+
+      console.log(solution(1));
+    </script>
+  </body>
+</html>

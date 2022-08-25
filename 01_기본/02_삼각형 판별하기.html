@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>삼각형 판별하기</title>
+  </head>
+  <body>
+    <h2>
+      길이가 서로 다른 A, B, C 세 개의 막대 길이가 주어지면 이 세 막대로
+      삼각형을 만들 수 있으면 "YES"를 출력하고, 만들 수 없으면 "NO"를 출력한다.
+    </h2>
+    <script>
+      // 1. 작은 변의 길이 2개를 구해야됨
+      // 2. 작은 변의 길이 2개의 합 > 가장 큰 변
+
+      // MY Code
+      function isTriangle(a, b, c) {
+        let Long, Short1, Short2, tmp;
+
+        if (a > b) {
+          (Long = a), (Short1 = b);
+        } else {
+          (Long = b), (Short1 = a);
+        }
+
+        if (c > Long) {
+          (tmp = Long), (Long = c), (Short2 = tmp);
+        } else {
+          Short2 = c;
+        }
+
+        if (Short1 + Short2 > Long) console.log(`YES`);
+        else console.log(`NO`);
+      }
+
+      isTriangle(6, 7, 11);
+      isTriangle(6, 7, 15);
+
+      // T Code
+      function solution(a, b, c) {
+        let answer = 'YES',
+          max;
+        let sum = a + b + c;
+        if (a > b) max = a;
+        else max = b;
+        if (c > max) max = c;
+        if (sum - max <= max) answer = 'NO';
+        return answer;
+      }
+
+      console.log(solution(11, 33, 17));
+    </script>
+  </body>
+</html>

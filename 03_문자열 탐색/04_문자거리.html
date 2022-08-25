@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // MY Code
+      function sol(str, s) {
+        const answer = new Array();
+        const arr = new Array();
+        str = str.split('');
+        let n = str.length;
+
+        for (let i = 0; i < n; i++) {
+          if (str[i] === s) arr.push(i);
+        }
+
+        for (let i = 0; i < n; i++) {
+          distance = Number.MAX_SAFE_INTEGER;
+          for (let j = 0; j < arr.length; j++) {
+            distance = Math.min(distance, Math.abs(parseInt(arr[j]) - i));
+          }
+          answer.push(distance);
+        }
+
+        return answer;
+      }
+
+      // T Code
+      const sol = function (s, t) {
+        let answer = [];
+        let p = 1000;
+        let n = answer.length;
+
+        for (let x of s) {
+          if (x === t) {
+            p = 0;
+            answer.push(p);
+          } else {
+            p++;
+            answer.push(p);
+          }
+        }
+
+        p = 1000;
+        for (let i = s.length - 1; i < n; i--) {
+          if (s[i] === t) p = 0;
+          else {
+            p++;
+            answer[i] = Math.min(answer[i], p);
+          }
+        }
+
+        return answer;
+      };
+
+      let str = 'teachermode';
+      let s = 'e';
+
+      console.log(sol(str, s));
+      console.log(sol2(str, s));
+    </script>
+  </body>
+</html>

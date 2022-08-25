@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A를 #으로</title>
+  </head>
+  <body>
+    <h2>
+      대문자를 이루어진 영단어가 입력되면 단어에 포함된 'A'를 모두 '#'으로
+      바꾸어 출력하는 프로그램 작성
+    </h2>
+    <script>
+      // My Code
+      function solution(word) {
+        let newWord = word.split('');
+        for (let i = 0; i < newWord.length; i++) {
+          if (newWord[i] === 'A') {
+            newWord[i] = '#';
+          }
+        }
+        console.log(newWord);
+        newWord = newWord.toString();
+        console.log(newWord);
+        return newWord;
+      }
+
+      // T Code 1
+      function solution2(word) {
+        let answer = '';
+        for (let x of word) {
+          if (x === 'A') answer += '#';
+          else answer += x;
+        }
+        return answer;
+      }
+
+      // T code 2
+      // 문자열은 주소를 참조하지 않고 값만 복사
+      function solution3(word) {
+        let answer = word;
+        answer = answer.replace(/A/g, '#');
+        return answer;
+      }
+
+      let word = 'BANANA';
+      console.log(solution(word));
+      console.log(solution2(word));
+      console.log(solution3(word));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // MY Code
+      // 내 코드는 같은점수는 같은등수로 못 구함
+      function sol(score) {
+        let answer = Array.from({ length: score.length }, () => 0);
+        let newScore = score.sort(function (a, b) {
+          return a - b;
+        });
+
+        for (let i = 0; i < newScore.length; i++) {
+          for (let j = 0; j < score.length; j++) {
+            if (score[j] === newScore[i]) {
+              answer[j] = i + 1;
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      // T Code
+      // 사고방식 : 나보다 점수가 높은애가 있으면
+      // 내 등수를 ++시켜버린다..
+      // 같은 점수도 자동으로 같은 등수가됨.. ㅁㅊ
+      function sol2(score) {
+        let n = score.length;
+        let answer = Array.from({ length: n }, () => 1);
+
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < n; j++) {
+            if (score[i] < score[j]) answer[i]++;
+          }
+        }
+
+        return answer;
+      }
+
+      let score = [87, 89, 92, 100, 76];
+      console.log(sol(score));
+      console.log(sol2(score));
+    </script>
+  </body>
+</html>

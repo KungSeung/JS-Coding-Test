@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = [];
+        // answer = n[0]; 이게 문제인듯, 값이 추가가 안됨
+        answer.push(n[0]);
+        for (let i = 0; i < n.length - 1; i++) {
+          if (n[i] < n[i + 1]) {
+            answer.push(n[i + 1]); // 값을 추갈할때는 push
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution([7, 3, 9, 5, 6, 12]));
+    </script>
+  </body>
+</html>

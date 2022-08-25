@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>홀수</title>
+  </head>
+  <body>
+    <h2>홀수</h2>
+    <script>
+      // MY Code
+      function solution1(arr) {
+        let sum = 0;
+        let minArr = new Array();
+        let j = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] % 2 === 1) {
+            sum += arr[i];
+            minArr[j] = arr[i];
+            j++;
+          }
+        }
+        return sum;
+      }
+
+      let arr = [12, 77, 38, 41, 53, 92, 85];
+      console.log(solution1(arr));
+
+      // T Code
+      function solution2(arr) {
+        let answer = [];
+        let sum = 0,
+          min = Number.MAX_SAFE_INTEGER;
+        for (let x of arr) {
+          if (x % 2 === 1) {
+            sum += x;
+            if (x < min) min = x;
+          }
+        }
+        answer.push(sum);
+        answer.push(min);
+
+        return answer;
+      }
+      console.log(solution2(arr));
+    </script>
+  </body>
+</html>

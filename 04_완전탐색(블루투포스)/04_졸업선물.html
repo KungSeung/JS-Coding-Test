@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sol(budget, cost) {
+        let answer = 0;
+        let sum = [];
+        let halfSum = [];
+        let totalCost = 0;
+        budget = budget[1];
+
+        let n = cost.length;
+        let m = cost[0].length;
+
+        // sum, halfSum 초기화
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < m - 1; j++) {
+            sum.push(cost[i][j] + cost[i][j + 1]);
+            halfSum.push(cost[i][j] / 2 + cost[i][j + 1]);
+          }
+        }
+
+        // 최대학생수 구하기
+        for (let i = 0; i < n; i++) {
+          let maxHalfSum = 0;
+          let idx = 0;
+          totalCost = 0;
+          // totalCost 전체비용
+          for (let i = 0; i < n; i++) {
+            totalCost += sum[i];
+          }
+          // halfSum 최대값의 idx 구하기
+          for (let i = 0; i < n; i++) {
+            maxHalfSum = Math.max(maxHalfSum, halfSum[i]);
+          }
+          for (let i = 0; i < n; i++) {
+            if (maxHalfSum === halfSum[i]) idx = i;
+          }
+          console.log(n);
+          totalCost = totalCost - sum[idx] + halfSum[idx];
+          console.log(totalCost);
+          if (totalCost <= budget) {
+            answer = totalCost;
+            break;
+          } else {
+            sum.splice(idx, 1);
+            halfSum.splice(idx, 1);
+            n = n - 1;
+          }
+        }
+
+        return answer;
+      }
+
+      function sol2(m, product) {
+        let answer = 0;
+        m = m[1];
+        let n = product.length;
+        product.sort((a, b) => a[0] + a[1] - (b[0] + b[1]));
+
+        for (let i = 0; i < n; i++) {
+          let money = m - product[i][0] / 2 + product[i][1];
+          let cnt = 1;
+          for (let j = 0; j < n; j++) {
+            if (j !== i && product[j][0] + product[j][1] > money) break;
+            if (j !== i && product[j][0] + product[j][1] <= money) {
+              // 살려고 하는 상품의 비용은 예산보다 작거나 같아야한다.
+              money -= product[j][0] + product[j][1];
+              cnt++;
+            }
+          }
+          answer = Math.max(answer, cnt);
+        }
+
+        return answer;
+      }
+
+      let budget = [5, 28];
+      let cost = [
+        [6, 6],
+        [2, 2],
+        [4, 3],
+        [4, 5],
+        [10, 3],
+      ];
+      console.log(sol(budget, cost));
+      console.log(sol2(budget, cost));
+    </script>
+  </body>
+</html>

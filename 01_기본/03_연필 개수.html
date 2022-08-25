@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연필 개수</title>
+  </head>
+  <body>
+    <h2>
+      연필 1다스는 12자루입니다. 학생 1인당 연필을 1자루씩 나누어 준다고 할 때
+      N명이 학생수를 입력하면 필요한 연필의 다스 수를 계산하는 프로그램 작성
+    </h2>
+    <script>
+      // MY Code, 같은 단어 지정 Ctrl+Shift+L
+      // JS는 나머지 짜르는게 없음;;
+      function solution(n) {
+        if (n % 12 === 0) {
+          return n / 12;
+        } else {
+          return Math.ceil(n / 12);
+        }
+      }
+      console.log(solution(178));
+      console.log(solution(121));
+
+      // T Code
+      // 올림 ceil : Math.ceil(2.11) = 3
+      // 내림 floor, 반올림 round, 제곱근 sqrt
+
+      function solution1(n) {
+        let answer = Math.ceilk(n / 12);
+        return answer;
+      }
+      console.log(solution(178));
+    </script>
+  </body>
+</html>

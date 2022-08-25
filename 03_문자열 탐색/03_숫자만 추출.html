@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // MY Code
+      // 씨발 왜 안됨
+      function sol(str) {
+        let answer = '';
+        str = str.split('');
+        let n = str.length;
+
+        for (let i = 0; i < n; i++) {
+          if (
+            !((97 <= str[i] && str[i] <= 122) || (65 <= str[i] && str[i] <= 90))
+          )
+            answer += str[i];
+          console.log(answer);
+        }
+        console.log(answer);
+
+        return answer;
+      }
+
+      // T Code
+      function sol2(str) {
+        let answer = '';
+        for (let x of str) {
+          // 숫자이면 참
+          if (!isNaN(x)) answer += x;
+        }
+
+        return parseInt(answer);
+      }
+
+      function sol3(str) {
+        let answer = 0;
+        for (let x of str) {
+          // answer * 10 자릿수 올림 역할
+          if (!isNaN(x)) answer = answer * 10 + Number(x);
+        }
+
+        return answer;
+      }
+
+      let str = 'tge0a1h205er';
+      console.log(sol(str));
+      console.log(sol2(str));
+      console.log(sol3(str));
+    </script>
+  </body>
+</html>

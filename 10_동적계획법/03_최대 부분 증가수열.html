@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>최대 부분 증가수열</title>
+  </head>
+  <body>
+    <script>
+      // 알고보니 정렬문제가 아니었음
+      // 문제 해석
+      // (x)
+      // 1. 부분적으로 가장 길게 증가
+      // 2. 길이가 최대 5
+
+      // (o)
+      // 1. 전 원소보다 증가
+      // 2. 배열의 길이가 가장 긴 수열
+
+      // dy[i] : arr[i]번째를 마지막으로 하는 가장 긴 수열의 길이
+      // arr의 i번째 숫자가 마지막 숫자
+
+      const solution = function (arr) {
+        let answer = 0;
+        let dy = Array.from({ length: arr.length }, () => 0);
+        dy[0] = 1;
+        for (let i = 1; i < arr.length; i++) {
+          let max = 0;
+          for (let j = i - 1; j >= 0; j--) {
+            if (arr[j] < arr[i] && dy[j] > max) {
+              max = dy[j];
+            }
+          }
+          dy[i] = max + 1;
+          answer = Math.max(answer, dy[i]);
+        }
+        return answer;
+      };
+
+      let arr = [5, 3, 7, 8, 6, 2, 9, 4];
+      console.log(solution(arr));
+
+      //  MY Code 정렬코드
+      /*  let arrLength = arr.length;
+      for (let i = 0; i < arrLength; i++) {
+        let index = 0;
+        let val = Math.min(...arr);
+        Arr[i] = val
+        for (let j = 0; j < arr.length; j++) {
+          if (arr[j] === val) index = j;
+        }
+        arr.splice(index, 1);
+      } */
+
+      /* (a,b)
+      + a가 b보다 뒤에 -> 얘만 외우자
+      0 그대로
+      - a가 b보다 앞에
+      arr.sort(function (a, b) {
+      return a - b;
+      }); */
+    </script>
+  </body>
+</html>

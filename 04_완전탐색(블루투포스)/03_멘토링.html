@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // T Code
+      function sol(arr) {
+        let answer = 0,
+          tmp = [];
+        let m = arr.length;
+        let n = arr[0].length;
+        // i와 j는 멘토와 멘티 경우의 수
+        // i와 j는 0이 들어가면 안된다 -> 학생번호를 찾아야하기 때문이다
+        for (let i = 1; i <= n; i++) {
+          for (let j = 1; j <= n; j++) {
+            let cnt = 0;
+            // k와 s는 나올 수 있는 등수
+            for (let k = 0; k < m; k++) {
+              let pi = (pj = 0);
+              for (let s = 0; s < n; s++) {
+                if (arr[k][s] === i) pi = s;
+                if (arr[k][s] === j) pj = s;
+              }
+              if (pi < pj) cnt++;
+            }
+            if (cnt === m) {
+              answer++;
+              tmp.push([i, j]);
+            }
+          }
+        }
+        console.log(tmp);
+        return answer;
+      }
+
+      let arr = [
+        [3, 4, 1, 2],
+        [4, 3, 2, 1],
+        [3, 1, 4, 2],
+      ];
+      console.log(sol(arr));
+    </script>
+  </body>
+</html>

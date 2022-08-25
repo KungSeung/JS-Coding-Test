@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // MY Code
+      function sol(problem) {
+        let answer = 0;
+        let score = 0;
+
+        let index = -1;
+        for (let i = 0; i < problem.length; i++) {
+          if (problem[i] === 0) continue;
+          if (i === problem.length - 1) return answer;
+          for (let j = i; j < problem.length; j++) {
+            if (problem[j] === 1) {
+              score++;
+              answer += score;
+              console.log(j);
+            } else {
+              i = j - 1;
+              score = 0;
+              break;
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      function sol2(arr) {
+        let answer = 0,
+          cnt = 0;
+        for (let x of arr) {
+          if (x === 1) {
+            cnt++;
+            answer += cnt;
+          } else cnt = 0;
+        }
+        return answer;
+      }
+
+      let problem = [1, 0, 1, 1, 1, 0, 0, 1, 1];
+      console.log(sol(problem));
+      console.log(sol2(problem));
+    </script>
+  </body>
+</html>

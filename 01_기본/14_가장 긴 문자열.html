@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가장 긴 문자열</title>
+  </head>
+  <body>
+    <script>
+      // MY Code
+      const solution = function (arr) {
+        let charNum = [];
+        for (let i = 0; i < arr.length; i++) charNum[i] = arr[i].length;
+
+        let index = charNum.indexOf(Math.max(...charNum));
+        return arr[index];
+      };
+
+      // T Code
+      const solution2 = function (arr) {
+        let answer,
+          max = Number.MIN_SAFE_INTEGER;
+        for (let x of s) {
+          if (x.length > max) {
+            max = x.length;
+            answer = x;
+          }
+        }
+        return answer;
+      };
+
+      let arr = ['teacher', 'teach', 'banana'];
+      console.log(solution(arr));
+      console.log(solution2(arr));
+    </script>
+  </body>
+</html>
