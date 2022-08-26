@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // MY code - two pointers algorithm
+      function sol(arr) {
+        let answer = [];
+        let ansEl = [];
+        let n = arr.length;
+        let p1 = (p2 = 0);
+
+        // p1 - 시작 index, p2 - 더하는 index
+        let sum = 0;
+        while (p1 < n) {
+          sum += arr[p2];
+          if (sum < 6) {
+            ansEl.push(arr[p2]);
+            p2++;
+          } else if (sum === 6) {
+            ansEl.push(arr[p2]);
+            // 임시방편으로 풀었으나 for문이 상당히 맘에 들지 않는다
+            for (let i = 0; i < ansEl.length; i++) {
+              answer.push(ansEl[i]);
+            }
+            ansEl.splice(0);
+          } else {
+            p1++;
+            p2 = p1;
+            sum = 0;
+            ansEl.splice(0);
+          }
+        }
+
+        return answer;
+      }
+
+      function sol2(arr) {
+        let result = [];
+
+        return answer;
+      }
+      let arr = [1, 2, 1, 3, 1, 1, 1, 2];
+      console.log(sol(arr));
+      console.log(sol2(arr));
+    </script>
+  </body>
+</html>
