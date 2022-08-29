@@ -40,8 +40,23 @@
         return answer;
       }
 
+      // 6보다 작으면 rt를 더하고
+      // 6보다 크면 lt를 뺀다
+      // 시간복잡도 O(n)
+      // T Code
       function sol2(arr) {
-        let result = [];
+        let answer = 0;
+        let lt = 0;
+        let sum = 0;
+
+        for (let rt = 0; rt < arr.length; rt++) {
+          sum += arr[rt];
+          if (sum === 6) answer++;
+          while (sum >= 6) {
+            sum -= arr[lt++];
+            if (sum === 6) answer++;
+          }
+        }
 
         return answer;
       }

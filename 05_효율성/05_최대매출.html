@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Sliding Window 알고리즘
+      // 고정 사이즈의 윈도우가 이동하면서 윈도우 내에 있는 데이터를 이용해 문제를 풀이
+      // for문 하나 돌면 끝남
+      // MY Code - for문을 뭘 잘못돌렸는지 값이 안나옴;;
+      function sol(n, k, arr) {
+        let answer = 0;
+        let sum1 = 0,
+          sum2 = 0;
+        let maxSum = 0;
+        for (let i = 0; i < n - k; i++) {
+          for (let j = i; j < j + 3; j++) {
+            sum1 += arr[j];
+            sum2 += arr[j + 1];
+          }
+          maxSum = Math.max(sum1, sum2);
+          (sum1 = 0), (sum2 = 0);
+        }
+        answer = maxSum;
+        return answer;
+      }
+
+      // T Code
+      // 선생님과 Code가 똑같은데도 왜 답이 안나오는지 이유모름
+      function sol2(n, k, arr) {
+        let answer = 0;
+        let sum = 0;
+
+        for (let i = 0; i < k; i++) {
+          sum += arr[k];
+        }
+        answer = sum;
+        for (let i = k; i < n; i++) {
+          sum += arr[i] - arr[i - k];
+          answer = Math.max(answer, sum);
+        }
+
+        return answer;
+      }
+
+      let n = 10;
+      let k = 3;
+      let arr = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+      //console.log(sol(n, k, arr));
+      console.log(sol2(n, k, arr));
+    </script>
+  </body>
+</html>

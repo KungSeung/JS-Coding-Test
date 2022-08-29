@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // MY Code
+      function sol(n, m, arr) {
+        let answer = 0;
+        let lt = 0,
+          sum = 0;
+        for (let rt = 0; rt < n; ) {
+          sum += arr[rt];
+          if (sum <= m) {
+            answer++;
+            rt++;
+            // console.log(sum);
+          } else {
+            sum = 0;
+            lt++;
+            rt = lt;
+          }
+        }
+
+        return answer;
+      }
+
+      // T Code
+      function sol2(n, m, arr) {
+        let result = 0;
+        let sum = 0;
+        let lt = 0;
+
+        for (let rt = 0; rt < arr.length; rt++) {
+          sum += arr[rt];
+          while (sum > m) {
+            sum -= arr[lt++];
+          }
+          console.log(result);
+          result += rt - lt + 1;
+        }
+        return result;
+      }
+      let n = 5,
+        m = 5;
+      let arr = [1, 3, 1, 2, 3];
+      console.log(sol(n, m, arr));
+      console.log(sol2(n, m, arr));
+    </script>
+  </body>
+</html>
