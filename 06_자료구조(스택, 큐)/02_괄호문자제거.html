@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // MY Code 승이 아주 굿이야!, 집중력도 아주 구시야!
+      function sol(s) {
+        let answer = [];
+        let num = 0; // 총 글자수
+        let num1 = 0,
+          num2 = 0; //
+        for (let x of s) {
+          answer.push(x);
+          if (x === '(') num1++;
+          else if (x === ')') num2++;
+          else {
+            if (num1 > 0 || num2 > 0) num++;
+          }
+          console.log(num1, num2, num);
+          if (num1 > 0 && num2 > 0 && num1 === num2) {
+            let len = num + num1 + num2;
+            for (let i = 0; i < len; i++) answer.pop();
+            num1 = 0;
+            num2 = 0;
+            num = 0;
+          }
+        }
+        return answer.toString().replace(/,/g, '');
+      }
+
+      // T Code
+      // ( 와 문자는 stack에 push
+      // ) 가 나오면 ( 를 만날때까지 다 pop
+      function sol2(s) {
+        let answer = 0;
+        stack = [];
+        for (let x of s) {
+          if (x === ')') {
+            while (stack.pop() !== '(');
+          } else stack.push(x);
+        }
+        answer = stack.join('');
+        return answer;
+      }
+
+      let s = '(A(BC)D)EF(G(H)(IJ)K)LM(N)';
+      console.log(sol(s));
+      console.log(sol2(s));
+    </script>
+  </body>
+</html>
