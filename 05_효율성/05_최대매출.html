@@ -11,18 +11,23 @@
       // Sliding Window 알고리즘
       // 고정 사이즈의 윈도우가 이동하면서 윈도우 내에 있는 데이터를 이용해 문제를 풀이
       // for문 하나 돌면 끝남
-      // MY Code - for문을 뭘 잘못돌렸는지 값이 안나옴;;
+      // MY Code - for문을 뭘 잘못돌렸는지 값이 안나옴;; -> 무한루프에 들어간듯
+      // j값을 i로줘서 종속돼서(?) 얘가 말을 못 알아먹는건가?
+      // -> 정답 j < j+3 이래버리면 j++ 값이 증가하면 1<4 2<6 3<7 ... 무한으로 돌기때문
       function sol(n, k, arr) {
         let answer = 0;
         let sum1 = 0,
           sum2 = 0;
         let maxSum = 0;
         for (let i = 0; i < n - k; i++) {
-          for (let j = i; j < j + 3; j++) {
+          let j = i;
+          while (j < i + k) {
             sum1 += arr[j];
             sum2 += arr[j + 1];
+            j++;
           }
-          maxSum = Math.max(sum1, sum2);
+
+          maxSum = Math.max(maxSum, sum1, sum2);
           (sum1 = 0), (sum2 = 0);
         }
         answer = maxSum;
@@ -38,10 +43,13 @@
         for (let i = 0; i < k; i++) {
           sum += arr[k];
         }
+        console.log(n, k);
+        console.log(sum); // 여기서 뭔가 잘못되어도 대단히 잘못됨 -> 말이 안되는데?..
         answer = sum;
         for (let i = k; i < n; i++) {
           sum += arr[i] - arr[i - k];
           answer = Math.max(answer, sum);
+          console.log(answer, sum);
         }
 
         return answer;

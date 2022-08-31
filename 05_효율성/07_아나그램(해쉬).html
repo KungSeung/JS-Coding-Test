@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // MY Code
+      function sol(str1, str2) {
+        let answer = 'YES';
+        let sH1 = new Map();
+        let sH2 = new Map();
+
+        for (let x of str1) {
+          if (sH1.has(x)) sH1.set(x, sH1.get(x) + 1);
+          else sH1.set(x, 1);
+        }
+        for (let x of str2) {
+          if (sH2.has(x)) sH2.set(x, sH2.get(x) + 1);
+          else sH2.set(x, 1);
+        }
+
+        for (let x of str1) {
+          if (sH1.has(x) && sH2.has(x)) {
+            let n = sH1.get(x);
+            let m = sH2.get(x);
+            if (n !== m) {
+              answer = 'No';
+              console.log('문자 갯수 다름');
+              break;
+            }
+          } else {
+            answer = 'No';
+            console.log('없는 문자 존재');
+            break;
+          }
+        }
+
+        return answer;
+      }
+      // T Code
+      // 만나면 1개씩 상쇄시키는 것
+      function sol2(str1, str2) {
+        let answer = 'YES';
+        let sH = new Map();
+        for (let x of str1) {
+          if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+          else sH.set(x, 1);
+        }
+
+        for (let x of str2) {
+          if (!sH.has(x) || sH.get(x) === 0) return 'NO'; // str2의 x의 갯수가 더 나옴
+          sH.set(x, sH.get(x) - 1);
+        }
+      }
+
+      let str1 = 'AbaAeCe';
+      let str2 = 'baeeACA';
+      let str3 = 'abaCC';
+      let str4 = 'Caaab';
+      console.log(sol(str1, str2));
+      console.log(sol(str3, str4));
+
+      // sol2 code
+      // for (let x of str2) {
+      //     if (sH.has(x)) {
+      //       sH.set(x, sH.get(x) - 1);
+      //       if (sH.get(x) < 0) answer = 'NO'; // str2가 길이가 길때
+      //     } else answer = 'NO';
+      //   }
+
+      // for (let [key, val] of sH) {
+      //   // str1이 길이가 길때
+      //   if (val >= 1) answer = 'NO';
+      // }
+    </script>
+  </body>
+</html>
