@@ -4,14 +4,14 @@ function solution(plans) {
   // 끝내는 시간 반환
   function timeFunc(startTime, playTime) {
     startTime = startTime.toString().replace(":", ".");
-    if (1 <= playTime && playTime <= 60) playTime = (playTime * 1) / 100;
+    if (1 <= playTime && playTime < 60) playTime = (playTime * 1) / 100;
     else {
       hour = 1;
       minute = ((playTime - 60) * 1) / 100;
       playTime = hour + minute;
     }
     // 12.4 1.01 13.41
-    let endTime = (startTime = playTime);
+    let endTime = startTime + playTime;
     return endTime;
   }
 
